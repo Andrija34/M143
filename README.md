@@ -1,75 +1,79 @@
-# Projektarbeit Modul 143 – Backup- und Restore-System
+# Meine Projektarbeit (Modul 143): Nextcloud mit Backup & Restore
 
 ## 1. Einleitung
-In dieser Projektarbeit wird ein praxisnahes Backup- und Restore-System umgesetzt.  
-Der gewählte **Use-Case** ist eine **Nextcloud-Installation** auf einem Ubuntu Server, welche als Dateiablage dient und sowohl Anwendungsdaten (Dateien) als auch eine Datenbank (MariaDB/MySQL) beinhaltet.  
-Ziel ist es, ein vollständiges Konzept zu entwickeln, die Backup- und Restore-Prozesse technisch zu realisieren und die Ergebnisse nachvollziehbar zu dokumentieren.  
+Ich habe mich entschieden, in diesem Projekt eine **Nextcloud** aufzusetzen und dazu ein **Backup- und Restore-System** zu entwickeln.  
+Die Idee ist, dass ich Daten (Dateien und Datenbank) automatisch sichere und bei Bedarf auch wiederherstellen kann.  
+Ich möchte nicht nur ein einfaches Backup machen, sondern auch gleich eine **hybride Lösung** ausprobieren: also einmal lokal (NAS) und einmal in der Cloud.  
 
-Das Projekt orientiert sich an der Kompetenzmatrix Modul 143 und zielt auf die Stufen **2–3 (Fortgeschritten bis Erweitert)** ab.  
-Dies bedeutet, dass nicht nur ein Basis-Backup erstellt wird, sondern eine hybride Lösung (lokal + Cloud) mit Automatisierung, Logging und Wiederherstellungstests umgesetzt wird.  
-
----
-
-## 2. Konzept
-Im Konzept werden die Anforderungen, Strategien und technischen Entscheidungen beschrieben.  
-
-### 2.1 Anforderungen
-- Sicherung der Nextcloud-Dateien und der Datenbank  
-- Kombination von **lokalen Backups** (NAS) und **Cloud-Speicher** (z. B. S3-kompatibel)  
-- Automatisierung und regelmäßige Durchführung der Backups  
-- Sicherstellung von Wiederherstellbarkeit (Restore-Tests)  
-- Verschlüsselung der Daten bei der Übertragung in die Cloud  
-
-### 2.2 Strategie
-- **Backup-Engine:** Restic (verschlüsselt, inkrementell, Cloud-ready)  
-- **Backup-Arten:**  
-  - Tägliches inkrementelles Backup  
-  - Wöchentliches Vollbackup  
-- **Speicherorte:**  
-  - Lokales NAS (Primärbackup)  
-  - Cloud-Speicher (Sekundärbackup, Offsite-Schutz)  
-- **Restore-Szenarien:**  
-  - Wiederherstellung einzelner Dateien  
-  - Vollständiger Restore von Nextcloud inkl. Datenbank  
-
-### 2.3 Machbarkeit
-- Speicherbedarf wird anhand der aktuellen Nextcloud-Daten und des erwarteten Wachstums berechnet  
-- Technische Umsetzung ist mit Open-Source-Tools realisierbar  
-- Kostenanalyse: lokale HDD/NAS vs. günstiger Cloud-Storage (z. B. Wasabi, Backblaze)  
+Mein Ziel ist es, am Ende ein System zu haben, das **regelmässig Backups erstellt**, diese **verschlüsselt** und wo ich zeigen kann, dass ein Restore wirklich funktioniert.  
 
 ---
 
-## 3. Umsetzung (Plan)
-Die Umsetzung erfolgt schrittweise:  
+## 2. Konzept (Planung)
+Im Moment bin ich noch am Anfang und überlege, wie ich das genau umsetze. Mein Plan sieht so aus:
 
-1. **Setup**  
-   - Installation von Nextcloud auf Ubuntu Server  
-   - Einrichtung von MariaDB/MySQL und Konfiguration der Datenablage  
+### 2.1 Was ich sichern will
+- Nextcloud-Dateien (Benutzerdaten und Konfiguration)  
+- Die MariaDB-Datenbank von Nextcloud  
 
-2. **Backup-Prozesse**  
-   - Installation von Restic  
-   - Einrichten von Repositories (NAS + Cloud)  
-   - Skripte für Datei- und DB-Backups (inkl. `mysqldump`)  
-   - Automatisierung via Cronjobs  
+### 2.2 Wie ich sichern will
+- **Software:** ich will `restic` nutzen, weil es Verschlüsselung und Cloud-Support eingebaut hat  
+- **Speicherziele:**  
+  - NAS im lokalen Netzwerk (für schnelle Sicherungen)  
+  - zusätzlich ein Cloud-Speicher (S3-kompatibel, z. B. Wasabi oder Backblaze)  
 
-3. **Monitoring & Logging**  
-   - Protokollierung aller Backup-Läufe  
-   - Mail-Benachrichtigung bei Fehlern  
+### 2.3 Automatisierung
+Ich möchte später mit **cronjobs** arbeiten, damit Backups automatisch laufen.  
+Geplant ist:  
+- täglich ein Backup  
+- wöchentlich aufräumen (alte Versionen löschen, Integrität prüfen)  
 
-4. **Restore-Tests**  
-   - Wiederherstellung einzelner Dateien  
-   - Komplett-Restore inkl. Datenbank  
-   - Dokumentation mit Screenshots  
-
----
-
-## 4. Ziele
-- Entwicklung eines **verlässlichen Backup- und Restore-Systems** für eine Nextcloud-Umgebung  
-- Nachweis der Funktionsfähigkeit durch **erfolgreiche Restore-Tests**  
-- Umsetzung einer **hybriden Strategie** (lokal + Cloud) mit Verschlüsselung  
-- Erstellung einer **verständlichen Dokumentation** (Prozess, Skripte, Screenshots)  
-- Reflexion der Ergebnisse und Erarbeitung möglicher Verbesserungen (z. B. Skalierung, zusätzliche Sicherheitsmaßnahmen)  
+### 2.4 Restore-Plan
+Ich will testen:  
+- einzelne Dateien wiederherstellen  
+- die ganze Datenbank zurückspielen  
+So habe ich den Beweis, dass meine Backups nicht nur da sind, sondern auch funktionieren.  
 
 ---
 
-wurde mit hilfe von ChatGPT erstellt
+## 3. Umsetzung (Schritte die ich vorhabe)
+Ich habe bisher nur einen groben Ablauf. Schritt für Schritt will ich das so machen:
+
+1. **Server vorbereiten**  
+   - Ubuntu Server installieren  
+   - Updates und Basis-Tools einrichten  
+
+2. **Docker & Compose installieren**  
+   - damit ich Nextcloud und MariaDB einfach als Container laufen lassen kann  
+
+3. **Nextcloud starten**  
+   - ein Docker Compose File schreiben  
+   - prüfen, ob die Nextcloud im Browser läuft  
+
+4. **NAS einbinden**  
+   - mein NAS über NFS oder SMB verbinden  
+   - testen, ob ich es beschreiben kann  
+
+5. **restic einrichten**  
+   - lokale Repo auf dem NAS initialisieren  
+   - ein Repo in der Cloud initialisieren  
+
+6. **Backup-Skript schreiben**  
+   - Datenbank dumpen  
+   - Dateien + Dump mit restic sichern  
+   - Logging einbauen  
+
+7. **Automatisieren**  
+   - cronjob einrichten, damit das Backup regelmässig läuft  
+
+8. **Restore testen**  
+   - einzelne Dateien zurückholen  
+   - Datenbank in eine Test-DB zurückspielen  
+
+---
+
+## 4. Meine Ziele
+- Ich möchte lernen, wie man ein **Backup- und Restore-System von Grund auf aufbaut**  
+- Ich will verstehen, wie man **lokale und Cloud-Speicher** kombiniert  
+- Am Ende möchte ich zeigen, dass mein System zuverlässig funktioniert  
+- Ich will eine **Dokumentation mit Screenshots** erstellen, damit jeder meine Arbeit nachvollziehen kann  
