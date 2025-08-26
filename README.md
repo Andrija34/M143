@@ -70,5 +70,5 @@ Die Umsetzung erfolgt schrittweise:
 - Erstellung einer **verständlichen Dokumentation** (Prozess, Skripte, Screenshots)  
 - Reflexion der Ergebnisse und Erarbeitung möglicher Verbesserungen (z. B. Skalierung, zusätzliche Sicherheitsmaßnahmen)  
 
-*wurde mit hilfe von ChatGPT erstellt*
+wurde mit hilfe von ChatGPT erstellt
 ---
