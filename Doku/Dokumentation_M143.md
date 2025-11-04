@@ -467,17 +467,15 @@ del C:\Data\Logs\SystemCheck.log
 
 ### 🔁 Einzeldatei-Wiederherstellung
 
-<<<<<<< HEAD
 ![Dashboard](./Screenshots/Backup.png)
 
 Ordner C:\Data\Dokumente wiederhergestellt
-=======
+=====
 **Vorgehen:**
 1. Menü **Restore** öffnen  
 2. Job **MinIO Cloud Backup** auswählen  
 3. Datei **C1_Test.txt** markieren  
 4. **Restore to original location → Restore** ausführen  
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
 ✅ **Ergebnis:** Die Datei wurde erfolgreich wiederhergestellt.
 
@@ -541,13 +539,12 @@ Zur Kontrolle der **Versionierung** wurde überprüft, ob ältere Backups automa
 
 ---
 
-<<<<<<< HEAD
 ![Dashboard](./Screenshots/Backup_Versionierung.png)
 
 In MinIO (http://localhost:9001):
 =======
 ## 🧩 5️⃣ Fehlerüberwachung und Problemanalyse
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
+
 
 Zur Kontrolle wurde getestet, ob **Duplicati Fehler korrekt protokolliert und meldet.**
 
@@ -676,7 +673,6 @@ Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBa
 Das System führt Backups **regelmäßig, sicher und vollständig** ohne manuelles Eingreifen aus.
 
 **D1 - Automatisiertes Backup**
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" backup `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
     "C:\Data" `
@@ -709,11 +705,7 @@ if ($log -match "error" -or $log -match "failed") {
 
 
 Automatisierter Restore
-<<<<<<< HEAD
 ```powershell
-=======
-```
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 $restorePath = "C:\Data\RestoreTest"
 ```
 
@@ -736,11 +728,9 @@ New-Item -ItemType Directory -Force -Path $restorePath
        ↓
 [RestoreBackup.ps1] → testet Wiederherstellung
 
-<<<<<<< HEAD
 **🧩 Fachliche Begründung**
 =======
 ## 🧩 Fachliche Begründung
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
 - **Vollständige Automatisierung** der Backup-Prozesse über Skripte  
 - **Fehlerprüfung & Protokollierung** für zuverlässige Kontrolle  
@@ -820,7 +810,6 @@ if ($hash1 -eq $hash2) {
 
 ---
 
-<<<<<<< HEAD
 # 🧩 D3 – Dokumentation der Sicherungsprozeduren
 ## 🎯 Ziel
 Eine vollständige, verständliche Dokumentation aller Backup- und Restore-Prozesse inklusive Skripte, Logs und Fehleranalyse.
@@ -832,7 +821,7 @@ Alle PowerShell-Skripte wurden zentral unter C:\Scripts\ abgelegt.
 
 ### 🎯 Ziel
 Eine vollständige, verständliche Dokumentation aller **Backup- und Restore-Prozesse** inklusive Skripte, Logs und Fehleranalyse.
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
+
 
 ### ⚙️ Umsetzung
 - Alle **PowerShell-Skripte** wurden zentral unter `C:\Scripts\` abgelegt.  
@@ -847,7 +836,6 @@ Eine vollständige, verständliche Dokumentation aller **Backup- und Restore-Pro
 
 ---
 
-<<<<<<< HEAD
 # 🧩 Fachliche Begründung
 Reproduzierbarkeit: Jeder Schritt ist dokumentiert und nachvollziehbar.
 
@@ -876,7 +864,6 @@ Schritt	Beschreibung
 Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollständige Sicherung und Wiederherstellung erforderlich sind.
 
 ### ⚙️ Übersicht
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
 | Schritt | Beschreibung |
 |:--|:--|
@@ -889,7 +876,7 @@ Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollst
 | 7 | Fehlerüberwachung aktivieren |
 | 8 | Ergebnisse dokumentieren |
 
-<<<<<<< HEAD
+
 # 🧩 Fachliche Begründung
 Klare Struktur der Backup-Phasen
 =======
@@ -897,26 +884,15 @@ Klare Struktur der Backup-Phasen
 - Klare Struktur der Backup-Phasen  
 - Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden  
 - Unterstützt die Nachvollziehbarkeit bei Audits und Sicherheitsprüfungen  
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
 ---
 
 ## 🧩 E2 – Zusammenfassung und Reflexion
-
-<<<<<<< HEAD
-
-# 🧩 E2 – Zusammenfassung und Reflexion
-## 🎯 Ziel
 =======
 ### 🎯 Ziel
 >>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 Reflexion der Arbeitsergebnisse, Bewertung der Backup-Strategie und persönlicher Erkenntnisse.
 
-### 🧠 Reflexion
-Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines **professionellen Backup-Systems** entwickelt.  
-Besonders wichtig war die **Trennung von kritischen und unkritischen Daten (A1)** sowie der **Cloud-Ansatz mit MinIO (A2)**.  
-
-<<<<<<< HEAD
 ### 🧠 Reflexion
 Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines professionellen Backup-Systems entwickelt.
 Besonders wichtig war die Trennung von kritischen und unkritischen Daten (A1) sowie der Cloud-Ansatz mit MinIO (A2).
@@ -924,13 +900,11 @@ Besonders wichtig war die Trennung von kritischen und unkritischen Daten (A1) so
 Die **Automatisierung (D1)** war die größte Herausforderung, hat mir aber gezeigt,  
 wie wichtig stabile Skripte, Logging und Zeitsteuerung für den Betrieb sind.  
 Ich konnte erfolgreich Backups **automatisieren, validieren und Fehler automatisch erkennen lassen.**
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
 In Zukunft möchte ich die Lösung um **Monitoring (z. B. Grafana)** und **Benachrichtigungen via Teams** erweitern.
 
 ---
 
-<<<<<<< HEAD
 # 🧩 Bewertung der Gesamtleistung
 Kriterium	            Bewertung                        Begründung
 Planung (A1)	            ✅	                        Strukturierte Klassifikation aller Daten
@@ -944,7 +918,7 @@ Prozessübersicht (E1)	    ✅	                        Alle Schritte aufgelistet
 Reflexion (E2)	            ✅	                        Kritische Selbstanalyse & Verbesserungsvorschläge
 =======
 ## 🧩 Bewertung der Gesamtleistung
->>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
+
 
 | Kriterium | Bewertung | Begründung |
 |:--|:--|:--|
