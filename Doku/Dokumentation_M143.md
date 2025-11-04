@@ -861,7 +861,7 @@ Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollst
 ---
 
 ## 🧩 E2 – Zusammenfassung und Reflexion
-=======
+
 ## 🎯 Ziel
 Reflexion der Arbeitsergebnisse, Bewertung der Backup-Strategie und persönlicher Erkenntnisse.
 
