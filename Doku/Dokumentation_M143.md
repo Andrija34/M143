@@ -662,97 +662,110 @@ if ($hash1 -eq $hash2) {
 }
 ```
 
-✅ Beide Hashwerte stimmen überein → Integrität bestätigt.
+# 🧩 Backup-Projekt – Dokumentation & Reflexion
 
-🧩 Fachliche Begründung
-Funktionskontrolle durch automatisierte Prüf- und Alarmmechanismen
+---
 
-Frühzeitige Fehlererkennung reduziert Ausfallzeiten
+## ✅ Integritätsprüfung
 
-Umsetzung des 3-2-1-Prinzips (mehrere Sicherungsorte + Prüfmechanismen)
+**Ergebnis:** Beide Hashwerte stimmen überein → **Integrität bestätigt.**
 
+### 🧩 Fachliche Begründung
+- Funktionskontrolle durch automatisierte Prüf- und Alarmmechanismen  
+- Frühzeitige Fehlererkennung reduziert Ausfallzeiten  
+- Umsetzung des **3-2-1-Prinzips** (mehrere Sicherungsorte + Prüfmechanismen)  
 
+---
 
-🧩 D3 – Dokumentation der Sicherungsprozeduren
-🎯 Ziel
-Eine vollständige, verständliche Dokumentation aller Backup- und Restore-Prozesse inklusive Skripte, Logs und Fehleranalyse.
+## 🧩 D3 – Dokumentation der Sicherungsprozeduren
 
-⚙️ Umsetzung
-Alle PowerShell-Skripte wurden zentral unter C:\Scripts\ abgelegt.
+### 🎯 Ziel
+Eine vollständige, verständliche Dokumentation aller **Backup- und Restore-Prozesse** inklusive Skripte, Logs und Fehleranalyse.
 
-Logdateien befinden sich unter C:\Data\Logs\.
+### ⚙️ Umsetzung
+- Alle **PowerShell-Skripte** wurden zentral unter `C:\Scripts\` abgelegt.  
+- **Logdateien** befinden sich unter `C:\Data\Logs\`.  
+- Die **Dokumentation** erfolgt in dieser Markdown-Datei.  
+- Alle **Screenshots** sind im Ordner `./Screenshots/` archiviert.  
 
-Die Dokumentation erfolgt in dieser Markdown-Datei.
+### 🧩 Fachliche Begründung
+- **Reproduzierbarkeit:** Jeder Schritt ist dokumentiert und nachvollziehbar.  
+- **Transparenz:** Alle relevanten Logs und Skripte sind versionsgesichert.  
+- **Advanced-Level:** Dokumentation erfüllt die Anforderungen für Wiederholbarkeit durch Dritte.  
 
-Alle Screenshots sind im Ordner ./Screenshots/ archiviert.
+---
 
-🧩 Fachliche Begründung
-Reproduzierbarkeit: Jeder Schritt ist dokumentiert und nachvollziehbar.
+## 🧩 E1 – Sicherungs- und Wiederherstellungsprozesse
 
-Transparenz: Alle relevanten Logs und Skripte sind versionsgesichert.
-
-Advanced-Level: Dokumentation erfüllt die Anforderungen für Wiederholbarkeit durch Dritte.
-
-🧩 E1 – Sicherungs- und Wiederherstellungsprozesse
-🎯 Ziel
+### 🎯 Ziel
 Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollständige Sicherung und Wiederherstellung erforderlich sind.
 
-⚙️ Übersicht
-Schritt	Beschreibung
-1	Datenstruktur erstellen (C:\Data\)
-2	Duplicati konfigurieren (S3-kompatibles Ziel)
-3	MinIO Bucket bereitstellen
-4	Backup starten und prüfen
-5	Restore-Prozedur testen
-6	Automatisierung per Skript und Task Scheduler
-7	Fehlerüberwachung aktivieren
-8	Ergebnisse dokumentieren
+### ⚙️ Übersicht
 
+| Schritt | Beschreibung |
+|:--|:--|
+| 1 | Datenstruktur erstellen (`C:\Data\`) |
+| 2 | Duplicati konfigurieren (S3-kompatibles Ziel) |
+| 3 | MinIO Bucket bereitstellen |
+| 4 | Backup starten und prüfen |
+| 5 | Restore-Prozedur testen |
+| 6 | Automatisierung per Skript und Task Scheduler |
+| 7 | Fehlerüberwachung aktivieren |
+| 8 | Ergebnisse dokumentieren |
 
-🧩 Fachliche Begründung
-Klare Struktur der Backup-Phasen
+### 🧩 Fachliche Begründung
+- Klare Struktur der Backup-Phasen  
+- Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden  
+- Unterstützt die Nachvollziehbarkeit bei Audits und Sicherheitsprüfungen  
 
-Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden
+---
 
-Unterstützt die Nachvollziehbarkeit bei Audits und Sicherheitsprüfungen
+## 🧩 E2 – Zusammenfassung und Reflexion
 
-
-🧩 E2 – Zusammenfassung und Reflexion
-🎯 Ziel
+### 🎯 Ziel
 Reflexion der Arbeitsergebnisse, Bewertung der Backup-Strategie und persönlicher Erkenntnisse.
 
+### 🧠 Reflexion
+Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines **professionellen Backup-Systems** entwickelt.  
+Besonders wichtig war die **Trennung von kritischen und unkritischen Daten (A1)** sowie der **Cloud-Ansatz mit MinIO (A2)**.  
 
-🧠 Reflexion
-Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines professionellen Backup-Systems entwickelt.
-Besonders wichtig war die Trennung von kritischen und unkritischen Daten (A1) sowie der Cloud-Ansatz mit MinIO (A2).
+Die **Automatisierung (D1)** war die größte Herausforderung, hat mir aber gezeigt,  
+wie wichtig stabile Skripte, Logging und Zeitsteuerung für den Betrieb sind.  
+Ich konnte erfolgreich Backups **automatisieren, validieren und Fehler automatisch erkennen lassen.**
 
-Die Automatisierung (D1) war die größte Herausforderung, hat mir aber gezeigt,
-wie wichtig stabile Skripte, Logging und Zeitsteuerung für den Betrieb sind.
-Ich konnte erfolgreich Backups automatisieren, validieren und Fehler automatisch erkennen lassen.
+In Zukunft möchte ich die Lösung um **Monitoring (z. B. Grafana)** und **Benachrichtigungen via Teams** erweitern.
 
-In Zukunft möchte ich die Lösung um Monitoring (z. B. Grafana) und Benachrichtigungen via Teams erweitern.
+---
 
-🧩 Bewertung der Gesamtleistung
-Kriterium	            Bewertung                        Begründung
-Planung (A1)	            ✅	                        Strukturierte Klassifikation aller Daten
-Cloud Backup (A2)	        ✅	                        MinIO + Duplicati erfolgreich verbunden
-Validierung (B1)	        ✅	                        Integrität geprüft und bestätigt
-Optimierung (C1)	        ✅	                        Kompression + AES-256 aktiviert
-Automatisierung (D1)	    ✅	                        Vollständig automatisiert per Skript
-Überprüfung (D2)	        ✅	                        Automatische Prüfung & Alarmierung
-Dokumentation (D3)	        ✅	                        Vollständig nachvollziehbar
-Prozessübersicht (E1)	    ✅	                        Alle Schritte aufgelistet
-Reflexion (E2)	            ✅	                        Kritische Selbstanalyse & Verbesserungsvorschläge
+## 🧩 Bewertung der Gesamtleistung
 
-🏁 Gesamtfazit
-✅ Projektziel erreicht:
-Ein sicheres, automatisiertes und dokumentiertes Backup-System, das Cloud-Technologien nutzt und vollständig auf Advanced-Niveau umgesetzt wurde.
+| Kriterium | Bewertung | Begründung |
+|:--|:--|:--|
+| Planung (A1) | ✅ | Strukturierte Klassifikation aller Daten |
+| Cloud Backup (A2) | ✅ | MinIO + Duplicati erfolgreich verbunden |
+| Validierung (B1) | ✅ | Integrität geprüft und bestätigt |
+| Optimierung (C1) | ✅ | Kompression + AES-256 aktiviert |
+| Automatisierung (D1) | ✅ | Vollständig automatisiert per Skript |
+| Überprüfung (D2) | ✅ | Automatische Prüfung & Alarmierung |
+| Dokumentation (D3) | ✅ | Vollständig nachvollziehbar |
+| Prozessübersicht (E1) | ✅ | Alle Schritte aufgelistet |
+| Reflexion (E2) | ✅ | Kritische Selbstanalyse & Verbesserungsvorschläge |
 
-💡 Erweiterungspotenzial:
+---
 
-Integration von E-Mail- oder Telegram-Benachrichtigungen
+## 🏁 Gesamtfazit
 
-Integration von Monitoring (Grafana / Prometheus)
+✅ **Projektziel erreicht:**  
+Ein sicheres, automatisiertes und dokumentiertes **Backup-System**,  
+das Cloud-Technologien nutzt und vollständig auf **Advanced-Niveau** umgesetzt wurde.
 
-Vollständige Cloud-Replikation (AWS S3 oder Azure Blob)
+---
+
+## 💡 Erweiterungspotenzial
+- Integration von **E-Mail- oder Telegram-Benachrichtigungen**  
+- Integration von **Monitoring (Grafana / Prometheus)**  
+- Vollständige **Cloud-Replikation (AWS S3 oder Azure Blob)**  
+
+---
+
 
