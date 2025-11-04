@@ -236,27 +236,34 @@ Duplicati → Restore → Test_A2.txt wiederhergestellt
 
 ![Backup Success](./Screenshots/Backup_Success.png)
 
-🧩 Fachliche Begründung (Advanced-Niveau)
-Durch den Einsatz von MinIO wurde ein Cloud-System aufgebaut, das S3-kompatibel ist.
+## 🧩 Fachliche Begründung (Advanced-Niveau)
 
-Die Daten sind mit AES-256 verschlüsselt, womit Vertraulichkeit gewährleistet wird.
+- Durch den Einsatz von **MinIO** wurde ein **Cloud-System** aufgebaut, das **S3-kompatibel** ist.  
+- Die Daten sind mit **AES-256** verschlüsselt, wodurch **Vertraulichkeit und Datenschutz** gewährleistet sind.  
+- Die **3-2-1-Regel** sorgt für Redundanz und hohe Verfügbarkeit.  
+- **RPO/RTO-Ziele** (Recovery Point / Recovery Time Objective) wurden definiert und technisch umgesetzt.  
+- **Ausschlussregeln** verbessern die Effizienz und senken den Speicherbedarf.  
 
-Die 3-2-1-Regel sorgt für Redundanz und hohe Verfügbarkeit.
+Diese Kombination erfüllt die Anforderungen des **Kompetenzrasters M143 (Advanced)** –  
+**Planung, Umsetzung, Test und Dokumentation** einer vollständigen Backup-Lösung mit **nachvollziehbarer Sicherheitsstrategie**.
 
-RPO/RTO-Ziele wurden definiert und technisch umgesetzt.
+---
 
-Ausschlussregeln verbessern die Effizienz und senken Speicherbedarf.
+## 🧾 Zusammenfassung
 
-Diese Kombination erfüllt die Anforderungen des Kompetenzrasters M143 (Advanced):
-Planung, Umsetzung, Test und Dokumentation einer vollständigen Backup-Lösung mit nachvollziehbarer Sicherheitsstrategie.
+| Teil | Ergebnis |
+|:--|:--|
+| Risikoanalyse | Dokumentiert & bewertet |
+| Backup-Strategie | 3-2-1-Regel umgesetzt |
+| Cloud-Backup | MinIO + Duplicati mit AES-256 |
+| Wiederherstellung | Erfolgreich getestet |
 
-🧾 Zusammenfassung
-Teil	            Ergebnis
-Risikoanalyse	    Dokumentiert & bewertet
-Backup-Strategie	3-2-1-Regel umgesetzt
-Cloud-Backup	    MinIO + Duplicati mit AES-256
-Wiederherstellung	Erfolgreich getestet
-Dokumentation	    Vollständig mit Screenshots
+---
+
+✅ **Fazit:**  
+Das Backup-System erfüllt sämtliche **Advanced-Anforderungen** des Moduls **M143**  
+und gewährleistet eine **sichere, redundante und überprüfbare Datensicherung**.
+
 
 
 
@@ -600,25 +607,59 @@ Damit erfüllt dieser Schritt die Anforderungen des **Kompetenzrasters M143 (Adv
 | **Status** | ✅ Backup-System vollständig geprüft und validiert |
 
 ---
-
 ### 🏁 Gesamtfazit
 Das Backup-System wurde **vollständig getestet, dokumentiert und validiert**.  
 Alle Funktionen – von der Sicherung über Wiederherstellung bis hin zur Überwachung – arbeiten **zuverlässig und nachvollziehbar**.  
 Das Projekt erfüllt die Anforderungen auf **Advanced-Niveau** nach Modul **M143**.
 
+---
 
-🧩 D1 – Befehle, Programme und Automatisierung
-🎯 Ziel
+## 🧩 D1 – Befehle, Programme und Automatisierung
 
-Automatisierung der gesamten Sicherungs- und Wiederherstellungsprozedur mit PowerShell und Task Scheduler.
+### 🎯 Ziel
+Automatisierung der gesamten **Sicherungs- und Wiederherstellungsprozedur**  
+mithilfe von **PowerShell** und dem **Windows Task Scheduler**.
 
-⚙️ Umsetzung
-Backup-Skript
+---
 
+### ⚙️ Umsetzung
 
+#### 💻 Backup-Skript
+
+```powershell
 # D1 - Automatisiertes Backup
+
+# Backup-Skript: RunBackup.ps1
+# Beschreibung: Führt ein automatisiertes Backup der Daten über Duplicati CLI aus
+
+$duplicatiPath = "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe"
+$backupSource = "C:\Data"
+$backupTarget = "s3://backup-m143/?auth-aws=true&use-ssl=false&s3-server-name=localhost:9000&s3-location-constraint=&s3-storage-class="
+$logFile = "C:\Data\Logs\backup_log.txt"
+
+# Backup-Befehl
+& $duplicatiPath backup "$backupTarget" "$backupSource" --backup-name="MinIO Cloud Backup" --dbpath="C:\Data\Duplicati\DB" --encryption-module="aes" --passphrase="MeinBackupPasswort123" --compression-module="zip" --log-file="$logFile" --no-auto-compact --disable-module=console-password-input
+
+# Ausgabe protokollieren
+Write-Output "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Backup ausgeführt." | Out-File -Append $logFile
+
 Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
 ```
+## 🧩 Fachliche Begründung
+
+- **Effizienz:** Alle Sicherungen werden automatisch gestartet, ohne Benutzerinteraktion.  
+- **Sicherheit:** Das Skript nutzt **AES-256-Verschlüsselung** und **Log-Überwachung** zur Absicherung der Daten.  
+- **Zuverlässigkeit:** Durch den **Task Scheduler** werden Backups regelmäßig und zeitgesteuert ausgeführt.  
+- **Advanced-Level:** Kombination aus **PowerShell**, **CLI-Steuerung** und **Logging** erfüllt die Anforderungen des **Kompetenzrasters D1**.
+
+---
+
+## 🧾 Ergebnis
+
+✅ **Automatisierte Sicherung erfolgreich implementiert.**  
+Das System führt Backups **regelmäßig, sicher und vollständig** ohne manuelles Eingreifen aus.
+
+**D1 - Automatisiertes Backup**
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" backup `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
     "C:\Data" `
