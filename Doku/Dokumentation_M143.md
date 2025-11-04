@@ -70,12 +70,13 @@ Ziel ist es, Ressourcen (Speicher, Zeit, Bandbreite) effizient zu nutzen, ohne w
 ### 3️⃣ Definition der Ausschlussregeln
 Um Cloud-Speicherplatz zu sparen und die Wiederherstellung zu beschleunigen, wurden folgende **Ausschlussregeln** definiert:
 
+```
 C:\Data\Temp
 *.tmp
 *.cache
 **\node_modules
 C:\Users*\AppData\Local\Temp\
-
+```
 
 Diese Regeln werden später direkt in **Duplicati** und optional in **Veeam File-Level Restore** integriert.  
 So wird vermieden, dass temporäre oder automatisch generierte Daten unnötig gesichert werden.
