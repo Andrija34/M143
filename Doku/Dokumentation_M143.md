@@ -888,4 +888,4 @@ das Cloud-Technologien nutzt und vollständig auf **Advanced-Niveau** umgesetzt 
 
 ---
 
-
+```struktur wurde mit Hilfe von Chat-GPT erstellt```
