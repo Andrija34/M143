@@ -546,46 +546,51 @@ Backup-Skript
 
 # D1 - Automatisiertes Backup
 Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
-
+```
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" backup `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
     "C:\Data" `
     --auth-username=backupuser --auth-password=B@ckup123! `
     --encryption-module=aes --passphrase="M143-Backup!2025" `
     --backup-test-samples=2 --log-file="C:\Data\Logs\Duplicati_CLI.log"
+```
 
 Write-Output "[$(Get-Date)] Backup erfolgreich abgeschlossen." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
 
+```
 Task Scheduler
 Einstellung	Wert
 Name	Duplicati_AutoBackup
 Trigger	Täglich um 22:00 Uhr
 Aktion	powershell.exe -File "C:\Scripts\RunBackup.ps1"
 Bedingung	Nur bei Netzwerkverbindung
+```
+
 
 Logprüfung
+```
 $log = Get-Content "C:\Data\Logs\Duplicati_CLI.log" -Tail 50
 if ($log -match "error" -or $log -match "failed") {
     msg * "⚠️ Backup-Fehler erkannt!"
 } else {
     Write-Output "Backup erfolgreich überprüft am $(Get-Date)" | Out-File "C:\Data\Logs\Backup_Check.log" -Append
 }
-
+```
 
 
 Automatisierter Restore
 $restorePath = "C:\Data\RestoreTest"
 New-Item -ItemType Directory -Force -Path $restorePath
 
+```
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" restore `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
     --target-path="$restorePath" `
     --auth-username=backupuser --auth-password=B@ckup123! `
     --encryption-module=aes --passphrase="M143-Backup!2025" `
     --restore-version=0
+```
 
-
-📸 Screenshot: ./Screenshots/Screenshot_D1_Restore_Result.png
 
 🔁 Ablaufdiagramm
 [Task Scheduler]
@@ -607,11 +612,11 @@ Modular aufgebautes System mit klar definierten Abläufen
 Erfüllt alle Advanced-Kriterien laut Kompetenzraster D1
 
 🧾 Gesamtfazit
-Kriterium	Bewertung
-Planung (A1)	Strukturiert, dokumentiert
-Cloud Backup (A2)	S3-kompatibel mit AES-256
-Restore (B1)	Erfolgreich validiert
-Optimierung (C1)	Kompression & Sicherheit verbessert
+Kriterium           	Bewertung
+Planung (A1)	        Strukturiert, dokumentiert
+Cloud Backup (A2)	    S3-kompatibel mit AES-256
+Restore (B1)	        Erfolgreich validiert
+Optimierung (C1)	    Kompression & Sicherheit verbessert
 Automatisierung (D1)	Vollständig automatisiert mit PowerShell
 
 ✅ Projektziel erreicht:
@@ -636,22 +641,18 @@ if ($logs -match "Error" -or $logs -match "Failed") {
 } else {
     Write-Output "Backupprüfung erfolgreich am $(Get-Date)" | Out-File "C:\Data\Logs\Backup_Verified.log" -Append
 }
+```
+
 ✅ Ergebnis:
 
 Automatische Prüfung des letzten Backups auf Fehler
 
 E-Mail-Benachrichtigung bei Fehlermeldung
 
-📸 Screenshots:
-
-./Screenshots/Screenshot_D2_Log_Mail.png
-
-./Screenshots/Screenshot_D2_Verify_Success.png
 
 2️⃣ Automatisierte Restore-Validierung
 
-powershell
-Code kopieren
+```powershell
 $hash1 = (Get-FileHash "C:\Data\Dokumente\Test_A2.txt").Hash
 $hash2 = (Get-FileHash "C:\Data\RestoreTest\Test_A2.txt").Hash
 if ($hash1 -eq $hash2) {
@@ -659,6 +660,8 @@ if ($hash1 -eq $hash2) {
 } else {
     Write-Output "❌ Restorefehler erkannt!" | Out-File "C:\Data\Logs\Restore_Check.log" -Append
 }
+```
+
 ✅ Beide Hashwerte stimmen überein → Integrität bestätigt.
 
 🧩 Fachliche Begründung
@@ -667,6 +670,8 @@ Funktionskontrolle durch automatisierte Prüf- und Alarmmechanismen
 Frühzeitige Fehlererkennung reduziert Ausfallzeiten
 
 Umsetzung des 3-2-1-Prinzips (mehrere Sicherungsorte + Prüfmechanismen)
+
+
 
 🧩 D3 – Dokumentation der Sicherungsprozeduren
 🎯 Ziel
@@ -680,12 +685,6 @@ Logdateien befinden sich unter C:\Data\Logs\.
 Die Dokumentation erfolgt in dieser Markdown-Datei.
 
 Alle Screenshots sind im Ordner ./Screenshots/ archiviert.
-
-📸 Screenshots:
-
-./Screenshots/Screenshot_D3_Folder_Structure.png
-
-./Screenshots/Screenshot_D3_Logs.png
 
 🧩 Fachliche Begründung
 Reproduzierbarkeit: Jeder Schritt ist dokumentiert und nachvollziehbar.
@@ -709,9 +708,6 @@ Schritt	Beschreibung
 7	Fehlerüberwachung aktivieren
 8	Ergebnisse dokumentieren
 
-📸 Screenshot:
-
-./Screenshots/Screenshot_E1_Process_Overview.png
 
 🧩 Fachliche Begründung
 Klare Struktur der Backup-Phasen
@@ -720,9 +716,11 @@ Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden
 
 Unterstützt die Nachvollziehbarkeit bei Audits und Sicherheitsprüfungen
 
+
 🧩 E2 – Zusammenfassung und Reflexion
 🎯 Ziel
 Reflexion der Arbeitsergebnisse, Bewertung der Backup-Strategie und persönlicher Erkenntnisse.
+
 
 🧠 Reflexion
 Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines professionellen Backup-Systems entwickelt.
@@ -735,16 +733,16 @@ Ich konnte erfolgreich Backups automatisieren, validieren und Fehler automatisch
 In Zukunft möchte ich die Lösung um Monitoring (z. B. Grafana) und Benachrichtigungen via Teams erweitern.
 
 🧩 Bewertung der Gesamtleistung
-Kriterium	Bewertung	Begründung
-Planung (A1)	✅	Strukturierte Klassifikation aller Daten
-Cloud Backup (A2)	✅	MinIO + Duplicati erfolgreich verbunden
-Validierung (B1)	✅	Integrität geprüft und bestätigt
-Optimierung (C1)	✅	Kompression + AES-256 aktiviert
-Automatisierung (D1)	✅	Vollständig automatisiert per Skript
-Überprüfung (D2)	✅	Automatische Prüfung & Alarmierung
-Dokumentation (D3)	✅	Vollständig nachvollziehbar
-Prozessübersicht (E1)	✅	Alle Schritte aufgelistet
-Reflexion (E2)	✅	Kritische Selbstanalyse & Verbesserungsvorschläge
+Kriterium	            Bewertung                        Begründung
+Planung (A1)	            ✅	                        Strukturierte Klassifikation aller Daten
+Cloud Backup (A2)	        ✅	                        MinIO + Duplicati erfolgreich verbunden
+Validierung (B1)	        ✅	                        Integrität geprüft und bestätigt
+Optimierung (C1)	        ✅	                        Kompression + AES-256 aktiviert
+Automatisierung (D1)	    ✅	                        Vollständig automatisiert per Skript
+Überprüfung (D2)	        ✅	                        Automatische Prüfung & Alarmierung
+Dokumentation (D3)	        ✅	                        Vollständig nachvollziehbar
+Prozessübersicht (E1)	    ✅	                        Alle Schritte aufgelistet
+Reflexion (E2)	            ✅	                        Kritische Selbstanalyse & Verbesserungsvorschläge
 
 🏁 Gesamtfazit
 ✅ Projektziel erreicht:
