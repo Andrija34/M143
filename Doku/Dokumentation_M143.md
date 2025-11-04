@@ -45,7 +45,7 @@ Set-Content C:\Data\Temp\cache.tmp "temp file"
 ```
 **Ergebnis:**  
 Die Daten sind nun thematisch getrennt und können individuell gesichert oder ausgeschlossen werden.
-
+`Screenshots/Data.png`
 ---
 
 ### 2️⃣ Klassifizierung der Daten
