@@ -812,7 +812,8 @@ Eine vollständige, verständliche Dokumentation aller Backup- und Restore-Proze
 
 ### ⚙️ Umsetzung
 Alle PowerShell-Skripte wurden zentral unter C:\Scripts\ abgelegt.
-=======
+
+
 ## 🧩 D3 – Dokumentation der Sicherungsprozeduren
 
 ### 🎯 Ziel
@@ -853,7 +854,7 @@ Schritt	Beschreibung
 6	Automatisierung per Skript und Task Scheduler
 7	Fehlerüberwachung aktivieren
 8	Ergebnisse dokumentieren
-=======
+
 ## 🧩 E1 – Sicherungs- und Wiederherstellungsprozesse
 
 ### 🎯 Ziel
@@ -873,9 +874,6 @@ Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollst
 | 8 | Ergebnisse dokumentieren |
 
 
-# 🧩 Fachliche Begründung
-Klare Struktur der Backup-Phasen
-=======
 ### 🧩 Fachliche Begründung
 - Klare Struktur der Backup-Phasen  
 - Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden  
@@ -885,14 +883,14 @@ Klare Struktur der Backup-Phasen
 
 ## 🧩 E2 – Zusammenfassung und Reflexion
 =======
-### 🎯 Ziel
+## 🎯 Ziel
 >>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 Reflexion der Arbeitsergebnisse, Bewertung der Backup-Strategie und persönlicher Erkenntnisse.
 
-### 🧠 Reflexion
+## 🧠 Reflexion
 Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines professionellen Backup-Systems entwickelt.
 Besonders wichtig war die Trennung von kritischen und unkritischen Daten (A1) sowie der Cloud-Ansatz mit MinIO (A2).
-=======
+
 Die **Automatisierung (D1)** war die größte Herausforderung, hat mir aber gezeigt,  
 wie wichtig stabile Skripte, Logging und Zeitsteuerung für den Betrieb sind.  
 Ich konnte erfolgreich Backups **automatisieren, validieren und Fehler automatisch erkennen lassen.**
@@ -900,8 +898,7 @@ Ich konnte erfolgreich Backups **automatisieren, validieren und Fehler automatis
 In Zukunft möchte ich die Lösung um **Monitoring (z. B. Grafana)** und **Benachrichtigungen via Teams** erweitern.
 
 ---
-
-# 🧩 Bewertung der Gesamtleistung
+## 🧩 Bewertung der Gesamtleistung
 Kriterium	            Bewertung                        Begründung
 Planung (A1)	            ✅	                        Strukturierte Klassifikation aller Daten
 Cloud Backup (A2)	        ✅	                        MinIO + Duplicati erfolgreich verbunden
@@ -912,7 +909,8 @@ Automatisierung (D1)	    ✅	                        Vollständig automatisiert 
 Dokumentation (D3)	        ✅	                        Vollständig nachvollziehbar
 Prozessübersicht (E1)	    ✅	                        Alle Schritte aufgelistet
 Reflexion (E2)	            ✅	                        Kritische Selbstanalyse & Verbesserungsvorschläge
-=======
+
+
 ## 🧩 Bewertung der Gesamtleistung
 
 
