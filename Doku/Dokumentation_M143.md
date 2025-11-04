@@ -351,29 +351,35 @@ Status (✔️ erfolgreich / ❌ Fehler)
 💾 Screenshot:
 ![Dashboard](./Screenshots/Dashboard.png)
 
-🧩 Fachliche Begründung (Advanced-Niveau)
+## 🧩 Fachliche Begründung (Advanced-Niveau)
 
-Automatisierung: Die Sicherung erfolgt zeitgesteuert, ohne manuelles Eingreifen.
+- **Automatisierung:** Die Sicherung erfolgt zeitgesteuert, ohne manuelles Eingreifen.  
+- **Nachvollziehbarkeit:** Logs und Ereignisanzeige ermöglichen detaillierte Fehleranalyse.  
+- **Verfügbarkeit:** Restore-Tests belegen die vollständige Wiederherstellbarkeit.  
+- **Monitoring:** Überwachung im Dashboard stellt die dauerhafte Funktion sicher.  
+- **Sicherheit:** Verschlüsselung (AES-256) und Ausschlussregeln erhöhen Effizienz und Datenschutz.  
 
-Nachvollziehbarkeit: Logs und Ereignisanzeige ermöglichen Fehleranalyse.
+Diese Punkte erfüllen die Kriterien des **Kompetenzrasters M143 (Advanced)** –  
+**eigenständige Planung, Umsetzung, Überwachung und Kontrolle** einer professionellen Backup-Lösung.
 
-Verfügbarkeit: Restore-Tests belegen Wiederherstellbarkeit.
+---
 
-Monitoring: Überwachung im Dashboard stellt Funktion sicher.
+## 🧾 Zusammenfassung
 
-Sicherheit: Verschlüsselung (AES-256) und Ausschlussregeln erhöhen Effizienz.
+| Teil | Ergebnis |
+|:--|:--|
+| Zeitplanung | Automatisches Backup aktiv |
+| Protokollierung | Log-Datei in `C:\Data\Logs\` |
+| Überwachung | Ereignisanzeige oder E-Mail-Report |
+| Wiederherstellung | Erfolgreich getestet |
+| Dashboard | Übersichtliche Kontrolle aller Backups |
+| **Status** | ✅ Backup-Strategie vollständig implementiert |
 
-Diese Punkte erfüllen die Kriterien des Kompetenzrasters M143 (Advanced) –
-eigenständige Planung, Umsetzung, Überwachung und Kontrolle einer Backup-Lösung.
+---
 
-🧾 Zusammenfassung
-Teil	            Ergebnis
-Zeitplanung	        Automatisches Backup aktiv
-Protokollierung	    Log-Datei in C:\Data\Logs\
-Überwachung	        Ereignisanzeige oder E-Mail-Report
-Wiederherstellung	Erfolgreich getestet
-Dashboard	        Übersichtliche Kontrolle aller Backups
-Status	            Backup-Strategie vollständig implementiert
+✅ **Fazit:**  
+Das System erfüllt sämtliche Anforderungen an eine **sichere, automatisierte und nachvollziehbare Backup-Lösung**  
+auf **Advanced-Niveau (M143)**.
 
 
 # 🧠 C1 – Datenwiederherstellung und Backup-Kontrolle (Advanced)
