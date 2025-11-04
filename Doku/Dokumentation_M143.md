@@ -811,16 +811,6 @@ if ($hash1 -eq $hash2) {
 Eine vollständige, verständliche Dokumentation aller Backup- und Restore-Prozesse inklusive Skripte, Logs und Fehleranalyse.
 
 ### ⚙️ Umsetzung
-Alle PowerShell-Skripte wurden zentral unter C:\Scripts\ abgelegt.
-
-
-## 🧩 D3 – Dokumentation der Sicherungsprozeduren
-
-### 🎯 Ziel
-Eine vollständige, verständliche Dokumentation aller **Backup- und Restore-Prozesse** inklusive Skripte, Logs und Fehleranalyse.
-
-
-### ⚙️ Umsetzung
 - Alle **PowerShell-Skripte** wurden zentral unter `C:\Scripts\` abgelegt.  
 - **Logdateien** befinden sich unter `C:\Data\Logs\`.  
 - Die **Dokumentation** erfolgt in dieser Markdown-Datei.  
@@ -833,16 +823,7 @@ Eine vollständige, verständliche Dokumentation aller **Backup- und Restore-Pro
 
 ---
 
-# 🧩 Fachliche Begründung
-Reproduzierbarkeit: Jeder Schritt ist dokumentiert und nachvollziehbar.
-
-Transparenz: Alle relevanten Logs und Skripte sind versionsgesichert.
-
-Advanced-Level: Dokumentation erfüllt die Anforderungen für Wiederholbarkeit durch Dritte.
-
 # 🧩 E1 – Sicherungs- und Wiederherstellungsprozesse
-## 🎯 Ziel
-Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollständige Sicherung und Wiederherstellung erforderlich sind.
 
 ### ⚙️ Übersicht
 Schritt	Beschreibung
@@ -854,8 +835,6 @@ Schritt	Beschreibung
 6	Automatisierung per Skript und Task Scheduler
 7	Fehlerüberwachung aktivieren
 8	Ergebnisse dokumentieren
-
-## 🧩 E1 – Sicherungs- und Wiederherstellungsprozesse
 
 ### 🎯 Ziel
 Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollständige Sicherung und Wiederherstellung erforderlich sind.
@@ -898,18 +877,6 @@ Ich konnte erfolgreich Backups **automatisieren, validieren und Fehler automatis
 In Zukunft möchte ich die Lösung um **Monitoring (z. B. Grafana)** und **Benachrichtigungen via Teams** erweitern.
 
 ---
-## 🧩 Bewertung der Gesamtleistung
-Kriterium	            Bewertung                        Begründung
-Planung (A1)	            ✅	                        Strukturierte Klassifikation aller Daten
-Cloud Backup (A2)	        ✅	                        MinIO + Duplicati erfolgreich verbunden
-Validierung (B1)	        ✅	                        Integrität geprüft und bestätigt
-Optimierung (C1)	        ✅	                        Kompression + AES-256 aktiviert
-Automatisierung (D1)	    ✅	                        Vollständig automatisiert per Skript
-Überprüfung (D2)	        ✅	                        Automatische Prüfung & Alarmierung
-Dokumentation (D3)	        ✅	                        Vollständig nachvollziehbar
-Prozessübersicht (E1)	    ✅	                        Alle Schritte aufgelistet
-Reflexion (E2)	            ✅	                        Kritische Selbstanalyse & Verbesserungsvorschläge
-
 
 ## 🧩 Bewertung der Gesamtleistung
 
