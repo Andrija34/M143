@@ -15,131 +15,31 @@ Diese Umgebung dient als Nachweis für alle Kompetenzen (A1–F1) des Moduls M14
 
 ---
 
-##  A1 – Daten klassifizieren und sichern
+# 🧠 A1 – Daten klassifizieren und sichern (Advanced)
 
-### Ziel
-Zu Beginn des Projekts werden die zu sichernden Daten identifiziert, klassifiziert und in eine logische Struktur gebracht, um eine sinnvolle Backup-Strategie zu entwickeln.
-
-### Umsetzung
-- Auf **VM1 (Backup-Server)** wurde ein Verzeichnis `C:\Data\` erstellt, das als **Datenquelle** für alle Tests dient.  
-- Darin befinden sich verschiedene Dateiarten:
-  - Dokumente (`.docx`, `.pdf`)
-  - Systemlogs (`.log`)
-  - Datenbank-Dumps (`.bak`)
-  - Testdaten (`.txt`, `.csv`)
-
-Diese Daten wurden in drei Kategorien eingeteilt:
-
-| Kategorie | Beschreibung | Backup-Typ |
-|------------|---------------|-------------|
-| **Kritisch** | Systemkonfigurationen, Logfiles | Image-Backup (Veeam) |
-| **Wichtig** | Projektdaten, Dokumente | Datei-Backup (Duplicati, verschlüsselt) |
-| **Unkritisch** | temporäre Dateien | werden ausgeschlossen |
-
-### Begründung
-Durch die **Klassifizierung der Daten** wird sichergestellt, dass wichtige Informationen priorisiert und ressourcenschonend gesichert werden.  
-Dadurch wird Speicherplatz optimiert und der Wiederherstellungsaufwand im Ernstfall minimiert.
-
-### Nachweis (Screenshots)
-- Ordnerstruktur `C:\Data\`
-- Beispiel-Dateien mit unterschiedlichen Endungen
-- Tabelle der Datenklassen
+## 🎯 Ziel
+In diesem Schritt werden alle relevanten Daten auf der Backup-VM (**VM1**) systematisch **identifiziert, klassifiziert und strukturiert**, um gezielt zu entscheiden, **welche Daten gesichert**, **wie oft** sie gesichert werden und **welche ausgeschlossen** werden sollen.  
+Dies bildet die Grundlage für eine effiziente und nachvollziehbare Backup-Strategie im gesamten Projekt.
 
 ---
 
-##  A2 – Risiken analysieren und Backupstrategie planen
+## ⚙️ Umsetzung
 
-### Ziel
-Analyse potenzieller Risiken, die zum Datenverlust führen könnten, und Planung geeigneter Schutzmaßnahmen (Backup-Strategie).
+### 1️⃣ Aufbau der Datenstruktur
+Auf der Haupt-VM (`VM1`) wurde ein zentraler Datenordner erstellt, der alle projekt- und systemspezifischen Dateien enthält.  
+Die Struktur wurde logisch in **Dokumente**, **Logs**, **Backups**, **Konfigurationen** und **temporäre Dateien** gegliedert.
 
-### Risikoanalyse
+#### 💻 PowerShell-Befehl zur Erstellung
+```powershell
+New-Item -ItemType Directory -Force C:\Data\Dokumente | Out-Null
+New-Item -ItemType Directory -Force C:\Data\Logs | Out-Null
+New-Item -ItemType Directory -Force C:\Data\Backups | Out-Null
+New-Item -ItemType Directory -Force C:\Data\Konfig | Out-Null
+New-Item -ItemType Directory -Force C:\Data\Temp | Out-Null
 
-| Risiko | Beschreibung | Auswirkung | Gegenmaßnahme |
-|--------|---------------|-------------|----------------|
-| Hardwareausfall | AWS-Volume beschädigt oder unzugänglich | Datenverlust | Image-Backup mit Veeam |
-| Menschlicher Fehler | Datei gelöscht oder überschrieben | Datenverlust | Versionierung mit Duplicati |
-| Malware/Ransomware | Verschlüsselung oder Zerstörung von Daten | Komplettausfall | Cloud-Backup mit AES-Verschlüsselung |
-| Fehlkonfiguration | Backup unvollständig oder fehlerhaft | Teilverlust | Automatisierte Health Checks |
-
-### Backupstrategie
-- Umsetzung der **3-2-1-Regel**:
-  - 3 Kopien (Original + lokal + Cloud)
-  - 2 verschiedene Medien (EBS + S3)
-  - 1 Offsite (Cloud)
-- Kombination aus:
-  - **Image-Backup (Veeam)** → für komplette Systemwiederherstellung  
-  - **Datei-Backup (Duplicati)** → für versionierte Cloud-Sicherungen
-
-### Zeitplan
-| Aufgabe | Häufigkeit | Tool |
-|----------|-------------|------|
-| System-Backup (Veeam) | täglich 02:00 | Veeam Agent |
-| Datei-Backup (Duplicati) | täglich 03:00 | Duplicati |
-| Integritätsprüfung | wöchentlich | Veeam Health Check |
-| Test-Wiederherstellung | monatlich | VM2 |
-
-### Begründung
-Diese Strategie erfüllt das Ziel eines **zuverlässigen, redundanten Backup-Systems** mit schnellen Wiederherstellungszeiten (RTO) und akzeptablen Datenverlustgrenzen (RPO).
-
-### Nachweis (Screenshots)
-- Planungsskizze der 3-2-1-Strategie (z. B. aus PowerPoint oder Draw.io)
-- Tabelle mit Zeitplan und Tools
-
----
-
-##  B1 – Backup-Lösung konzipieren und Infrastruktur aufbauen
-
-### Ziel
-Aufbau einer funktionierenden Infrastruktur in AWS, die Backups und Restores realistisch simulieren kann.
-
-### Umsetzung
-In **AWS EC2** wurden zwei virtuelle Maschinen erstellt:
-
-| Komponente | Beschreibung |
-|-------------|---------------|
-| **VM1: Backup-Server** | Hauptsystem für Backup-Erstellung |
-| **VM2: Recovery-Server** | Testsystem für Wiederherstellung |
-| **Storage (EBS)** | 50 GB Root + 100 GB Backup-Volume |
-| **S3 Bucket** | Cloud-Ziel für Duplicati-Backups |
-
-### Netzwerkeinstellungen
-- Beide Instanzen befinden sich in derselben AWS-VPC.
-- **Security Group:** RDP (Port 3389) freigegeben.
-- Private Kommunikation zwischen VM1 und VM2 erlaubt.
-
-### Begründung
-Durch den Aufbau von zwei separaten Systemen wird das **Disaster-Recovery-Szenario** realitätsnah simuliert.  
-So kann nachgewiesen werden, dass eine vollständige Wiederherstellung möglich ist – unabhängig vom ursprünglichen Server.
-
-### Nachweis (Screenshots)
-- AWS EC2 Dashboard mit beiden Instanzen  
-- EC2 Instance Details (AMI, Storage, IP)  
-- S3 Bucket Übersicht  
-- RDP-Verbindung zu VM1 & VM2  
-
----
-
-##  C1 – Speicherlösungen dokumentieren
-
-### Ziel
-Erfassen und beschreiben der Speicherinfrastruktur, die für Backup und Restore eingesetzt wird.
-
-### Umsetzung
-| Speicherort | Typ | Zweck | Tool |
-|--------------|-----|--------|------|
-| **C:** | Lokaler Volume (50 GB) | Betriebssystem & Daten | – |
-| **D:** | Zweites EBS Volume (100 GB) | Backup-Ziel für Veeam | Veeam Agent |
-| **AWS S3 Bucket** | Cloud Storage | Offsite-Backup für Duplicati | Duplicati |
-| **VM2 (Recovery)** | EC2 Volume | Restore-Ziel | Veeam / Duplicati |
-
-### Begründung
-Die Kombination aus lokalen und Cloud-Speichern gewährleistet:
-- schnelle Wiederherstellung lokaler Backups,
-- zusätzliche Sicherheit durch geografisch getrennte Speicherung (AWS S3).
-
-### Nachweis (Screenshots)
-- Windows Explorer: C: und D: Laufwerke  
-- AWS S3 Bucket Details  
-- Beleg der Verschlüsselung (AES-256)  
-
----
+Set-Content C:\Data\Dokumente\Bericht.docx "Backup-Projektbericht"
+Set-Content C:\Data\Logs\System.log "Logeintrag $(Get-Date)"
+Set-Content C:\Data\Backups\DatabaseDump.bak "SQL Backup Platzhalter"
+Set-Content C:\Data\Konfig\appsettings.json "{ `"env`": `"prod`" }"
+Set-Content C:\Data\Temp\cache.tmp "temp file"
+```
