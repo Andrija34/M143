@@ -442,6 +442,8 @@ In Duplicati:
 
 Menü Restore → Folder Restore
 
+![Dashboard](./Screenshots/Backup.png)
+
 Ordner C:\Data\Dokumente wiederhergestellt
 
 ➡️ Beide Dateien wurden erfolgreich wiederhergestellt.
@@ -475,6 +477,8 @@ In Duplicati:
 Menü Restore → Dropdown „Version“ öffnen
 
 Alle Backup-Versionen sichtbar (z. B. täglich, wöchentlich)
+
+![Dashboard](./Screenshots/Backup_Versionierung.png)
 
 In MinIO (http://localhost:9001):
 
@@ -545,8 +549,8 @@ Backup-Skript
 
 
 # D1 - Automatisiertes Backup
+```powershell
 Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
-```
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" backup `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
     "C:\Data" `
@@ -554,21 +558,21 @@ Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBa
     --encryption-module=aes --passphrase="M143-Backup!2025" `
     --backup-test-samples=2 --log-file="C:\Data\Logs\Duplicati_CLI.log"
 ```
-
+```powershell
 Write-Output "[$(Get-Date)] Backup erfolgreich abgeschlossen." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
-
 ```
+
 Task Scheduler
 Einstellung	Wert
 Name	Duplicati_AutoBackup
 Trigger	Täglich um 22:00 Uhr
 Aktion	powershell.exe -File "C:\Scripts\RunBackup.ps1"
 Bedingung	Nur bei Netzwerkverbindung
-```
 
 
 Logprüfung
-```
+
+```powershell
 $log = Get-Content "C:\Data\Logs\Duplicati_CLI.log" -Tail 50
 if ($log -match "error" -or $log -match "failed") {
     msg * "⚠️ Backup-Fehler erkannt!"
@@ -579,10 +583,9 @@ if ($log -match "error" -or $log -match "failed") {
 
 
 Automatisierter Restore
+```powershell
 $restorePath = "C:\Data\RestoreTest"
 New-Item -ItemType Directory -Force -Path $restorePath
-
-```
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" restore `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
     --target-path="$restorePath" `
@@ -601,7 +604,7 @@ New-Item -ItemType Directory -Force -Path $restorePath
        ↓
 [RestoreBackup.ps1] → testet Wiederherstellung
 
-🧩 Fachliche Begründung
+**🧩 Fachliche Begründung**
 
 Vollständige Automatisierung der Backup-Prozesse über Skripte
 
@@ -673,11 +676,11 @@ Umsetzung des 3-2-1-Prinzips (mehrere Sicherungsorte + Prüfmechanismen)
 
 
 
-🧩 D3 – Dokumentation der Sicherungsprozeduren
-🎯 Ziel
+# 🧩 D3 – Dokumentation der Sicherungsprozeduren
+## 🎯 Ziel
 Eine vollständige, verständliche Dokumentation aller Backup- und Restore-Prozesse inklusive Skripte, Logs und Fehleranalyse.
 
-⚙️ Umsetzung
+### ⚙️ Umsetzung
 Alle PowerShell-Skripte wurden zentral unter C:\Scripts\ abgelegt.
 
 Logdateien befinden sich unter C:\Data\Logs\.
@@ -686,18 +689,18 @@ Die Dokumentation erfolgt in dieser Markdown-Datei.
 
 Alle Screenshots sind im Ordner ./Screenshots/ archiviert.
 
-🧩 Fachliche Begründung
+# 🧩 Fachliche Begründung
 Reproduzierbarkeit: Jeder Schritt ist dokumentiert und nachvollziehbar.
 
 Transparenz: Alle relevanten Logs und Skripte sind versionsgesichert.
 
 Advanced-Level: Dokumentation erfüllt die Anforderungen für Wiederholbarkeit durch Dritte.
 
-🧩 E1 – Sicherungs- und Wiederherstellungsprozesse
-🎯 Ziel
+# 🧩 E1 – Sicherungs- und Wiederherstellungsprozesse
+## 🎯 Ziel
 Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollständige Sicherung und Wiederherstellung erforderlich sind.
 
-⚙️ Übersicht
+### ⚙️ Übersicht
 Schritt	Beschreibung
 1	Datenstruktur erstellen (C:\Data\)
 2	Duplicati konfigurieren (S3-kompatibles Ziel)
@@ -709,7 +712,7 @@ Schritt	Beschreibung
 8	Ergebnisse dokumentieren
 
 
-🧩 Fachliche Begründung
+# 🧩 Fachliche Begründung
 Klare Struktur der Backup-Phasen
 
 Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden
@@ -717,12 +720,12 @@ Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden
 Unterstützt die Nachvollziehbarkeit bei Audits und Sicherheitsprüfungen
 
 
-🧩 E2 – Zusammenfassung und Reflexion
-🎯 Ziel
+# 🧩 E2 – Zusammenfassung und Reflexion
+## 🎯 Ziel
 Reflexion der Arbeitsergebnisse, Bewertung der Backup-Strategie und persönlicher Erkenntnisse.
 
 
-🧠 Reflexion
+### 🧠 Reflexion
 Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines professionellen Backup-Systems entwickelt.
 Besonders wichtig war die Trennung von kritischen und unkritischen Daten (A1) sowie der Cloud-Ansatz mit MinIO (A2).
 
@@ -732,7 +735,7 @@ Ich konnte erfolgreich Backups automatisieren, validieren und Fehler automatisch
 
 In Zukunft möchte ich die Lösung um Monitoring (z. B. Grafana) und Benachrichtigungen via Teams erweitern.
 
-🧩 Bewertung der Gesamtleistung
+# 🧩 Bewertung der Gesamtleistung
 Kriterium	            Bewertung                        Begründung
 Planung (A1)	            ✅	                        Strukturierte Klassifikation aller Daten
 Cloud Backup (A2)	        ✅	                        MinIO + Duplicati erfolgreich verbunden

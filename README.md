@@ -123,8 +123,7 @@ Ein sicheres, automatisiertes und dokumentiertes Backup-System auf Cloud-Basis, 
 
 ## 👤 Autor
 
-**Name:** *[Andrija Milosevic]*  
-**Projekt:** Backup & Restore Automatisierung  
-**Ausbildungsbereich:** Plattformentwicklung 
-**Standort:** Schweiz  
-**Jahr:** 2025
+**Name:** *Andrija Milosevic*  
+**Projekt:** Backup & Restore Automatisierung
+
+```Die Struktur wurde mit Hilfe von Chat-GPT erstellt```
