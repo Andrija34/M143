@@ -43,3 +43,39 @@ Set-Content C:\Data\Backups\DatabaseDump.bak "SQL Backup Platzhalter"
 Set-Content C:\Data\Konfig\appsettings.json "{ `"env`": `"prod`" }"
 Set-Content C:\Data\Temp\cache.tmp "temp file"
 ```
+**Ergebnis:**  
+Die Daten sind nun thematisch getrennt und können individuell gesichert oder ausgeschlossen werden.
+
+---
+
+### 2️⃣ Klassifizierung der Daten
+Die Daten wurden nach **Kritikalität und Wiederherstellungsbedarf** eingeteilt.  
+Ziel ist es, Ressourcen (Speicher, Zeit, Bandbreite) effizient zu nutzen, ohne wichtige Daten zu gefährden.
+
+| Kategorie | Beispiele | Schutzbedarf | Backup-Art | Aufbewahrung |
+|------------|------------|---------------|-------------|---------------|
+| **Kritisch** | `C:\Data\Konfig\appsettings.json`, Systemeinstellungen, Lizenzdateien | Hoch | **Image-Backup (Veeam)** | 14 Restore Points |
+| **Wichtig** | `C:\Data\Dokumente\*`, `C:\Data\Backups\*.bak` | Mittel | **Datei-Backup (Duplicati, AES-256)** | 7d / 4w / 12m |
+| **Unkritisch** | `C:\Data\Temp\*`, `*.tmp`, `*.cache` | Niedrig | Wird **nicht gesichert** | – |
+
+---
+
+### 🧩 Begründung der Klassifizierung
+- **Kritische Daten** müssen sofort und vollständig wiederherstellbar sein (Systemintegrität).  
+- **Wichtige Daten** sind inhaltlich relevant, ändern sich häufig und werden daher versioniert in die Cloud gesichert.  
+- **Unkritische Dateien** verursachen nur unnötigen Speicherverbrauch und werden explizit ausgeschlossen.
+
+---
+
+### 3️⃣ Definition der Ausschlussregeln
+Um Cloud-Speicherplatz zu sparen und die Wiederherstellung zu beschleunigen, wurden folgende **Ausschlussregeln** definiert:
+
+C:\Data\Temp
+*.tmp
+*.cache
+**\node_modules
+C:\Users*\AppData\Local\Temp\
+
+
+Diese Regeln werden später direkt in **Duplicati** und optional in **Veeam File-Level Restore** integriert.  
+So wird vermieden, dass temporäre oder automatisch generierte Daten unnötig gesichert werden.
