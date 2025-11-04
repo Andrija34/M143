@@ -409,8 +409,8 @@ Zur Überprüfung der Backup-Funktion wurde eine gezielte Wiederherstellung gete
 1. Testdatei erstellt:
    ```powershell
    echo "C1-Testdatei" > C:\Data\Dokumente\C1_Test.txt
+   ```
 Backup manuell in Duplicati gestartet ✅
-```
 
 Datei gelöscht:
 
@@ -635,9 +635,7 @@ mithilfe von **PowerShell** und dem **Windows Task Scheduler**.
 
 #### 💻 Backup-Skript
 
-```powershell
 # D1 - Automatisiertes Backup
-<<<<<<< HEAD
 ```powershell
 Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
 =======
@@ -673,24 +671,24 @@ Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBa
 Das System führt Backups **regelmäßig, sicher und vollständig** ohne manuelles Eingreifen aus.
 
 **D1 - Automatisiertes Backup**
+```powershell
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" backup `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
     "C:\Data" `
     --auth-username=backupuser --auth-password=B@ckup123! `
     --encryption-module=aes --passphrase="M143-Backup!2025" `
     --backup-test-samples=2 --log-file="C:\Data\Logs\Duplicati_CLI.log"
-```
-```powershell
 Write-Output "[$(Get-Date)] Backup erfolgreich abgeschlossen." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
 ```
 
-Task Scheduler
-Einstellung	Wert
+Task Scheduler Einstellung	
+```
+Wert
 Name	Duplicati_AutoBackup
 Trigger	Täglich um 22:00 Uhr
 Aktion	powershell.exe -File "C:\Scripts\RunBackup.ps1"
 Bedingung	Nur bei Netzwerkverbindung
-
+```
 
 Logprüfung
 
@@ -707,8 +705,6 @@ if ($log -match "error" -or $log -match "failed") {
 Automatisierter Restore
 ```powershell
 $restorePath = "C:\Data\RestoreTest"
-```
-
 New-Item -ItemType Directory -Force -Path $restorePath
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" restore `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
