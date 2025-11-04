@@ -236,27 +236,34 @@ Duplicati → Restore → Test_A2.txt wiederhergestellt
 
 ![Backup Success](./Screenshots/Backup_Success.png)
 
-🧩 Fachliche Begründung (Advanced-Niveau)
-Durch den Einsatz von MinIO wurde ein Cloud-System aufgebaut, das S3-kompatibel ist.
+## 🧩 Fachliche Begründung (Advanced-Niveau)
 
-Die Daten sind mit AES-256 verschlüsselt, womit Vertraulichkeit gewährleistet wird.
+- Durch den Einsatz von **MinIO** wurde ein **Cloud-System** aufgebaut, das **S3-kompatibel** ist.  
+- Die Daten sind mit **AES-256** verschlüsselt, wodurch **Vertraulichkeit und Datenschutz** gewährleistet sind.  
+- Die **3-2-1-Regel** sorgt für Redundanz und hohe Verfügbarkeit.  
+- **RPO/RTO-Ziele** (Recovery Point / Recovery Time Objective) wurden definiert und technisch umgesetzt.  
+- **Ausschlussregeln** verbessern die Effizienz und senken den Speicherbedarf.  
 
-Die 3-2-1-Regel sorgt für Redundanz und hohe Verfügbarkeit.
+Diese Kombination erfüllt die Anforderungen des **Kompetenzrasters M143 (Advanced)** –  
+**Planung, Umsetzung, Test und Dokumentation** einer vollständigen Backup-Lösung mit **nachvollziehbarer Sicherheitsstrategie**.
 
-RPO/RTO-Ziele wurden definiert und technisch umgesetzt.
+---
 
-Ausschlussregeln verbessern die Effizienz und senken Speicherbedarf.
+## 🧾 Zusammenfassung
 
-Diese Kombination erfüllt die Anforderungen des Kompetenzrasters M143 (Advanced):
-Planung, Umsetzung, Test und Dokumentation einer vollständigen Backup-Lösung mit nachvollziehbarer Sicherheitsstrategie.
+| Teil | Ergebnis |
+|:--|:--|
+| Risikoanalyse | Dokumentiert & bewertet |
+| Backup-Strategie | 3-2-1-Regel umgesetzt |
+| Cloud-Backup | MinIO + Duplicati mit AES-256 |
+| Wiederherstellung | Erfolgreich getestet |
 
-🧾 Zusammenfassung
-Teil	            Ergebnis
-Risikoanalyse	    Dokumentiert & bewertet
-Backup-Strategie	3-2-1-Regel umgesetzt
-Cloud-Backup	    MinIO + Duplicati mit AES-256
-Wiederherstellung	Erfolgreich getestet
-Dokumentation	    Vollständig mit Screenshots
+---
+
+✅ **Fazit:**  
+Das Backup-System erfüllt sämtliche **Advanced-Anforderungen** des Moduls **M143**  
+und gewährleistet eine **sichere, redundante und überprüfbare Datensicherung**.
+
 
 
 
@@ -351,29 +358,35 @@ Status (✔️ erfolgreich / ❌ Fehler)
 💾 Screenshot:
 ![Dashboard](./Screenshots/Dashboard.png)
 
-🧩 Fachliche Begründung (Advanced-Niveau)
+## 🧩 Fachliche Begründung (Advanced-Niveau)
 
-Automatisierung: Die Sicherung erfolgt zeitgesteuert, ohne manuelles Eingreifen.
+- **Automatisierung:** Die Sicherung erfolgt zeitgesteuert, ohne manuelles Eingreifen.  
+- **Nachvollziehbarkeit:** Logs und Ereignisanzeige ermöglichen detaillierte Fehleranalyse.  
+- **Verfügbarkeit:** Restore-Tests belegen die vollständige Wiederherstellbarkeit.  
+- **Monitoring:** Überwachung im Dashboard stellt die dauerhafte Funktion sicher.  
+- **Sicherheit:** Verschlüsselung (AES-256) und Ausschlussregeln erhöhen Effizienz und Datenschutz.  
 
-Nachvollziehbarkeit: Logs und Ereignisanzeige ermöglichen Fehleranalyse.
+Diese Punkte erfüllen die Kriterien des **Kompetenzrasters M143 (Advanced)** –  
+**eigenständige Planung, Umsetzung, Überwachung und Kontrolle** einer professionellen Backup-Lösung.
 
-Verfügbarkeit: Restore-Tests belegen Wiederherstellbarkeit.
+---
 
-Monitoring: Überwachung im Dashboard stellt Funktion sicher.
+## 🧾 Zusammenfassung
 
-Sicherheit: Verschlüsselung (AES-256) und Ausschlussregeln erhöhen Effizienz.
+| Teil | Ergebnis |
+|:--|:--|
+| Zeitplanung | Automatisches Backup aktiv |
+| Protokollierung | Log-Datei in `C:\Data\Logs\` |
+| Überwachung | Ereignisanzeige oder E-Mail-Report |
+| Wiederherstellung | Erfolgreich getestet |
+| Dashboard | Übersichtliche Kontrolle aller Backups |
+| **Status** | ✅ Backup-Strategie vollständig implementiert |
 
-Diese Punkte erfüllen die Kriterien des Kompetenzrasters M143 (Advanced) –
-eigenständige Planung, Umsetzung, Überwachung und Kontrolle einer Backup-Lösung.
+---
 
-🧾 Zusammenfassung
-Teil	            Ergebnis
-Zeitplanung	        Automatisches Backup aktiv
-Protokollierung	    Log-Datei in C:\Data\Logs\
-Überwachung	        Ereignisanzeige oder E-Mail-Report
-Wiederherstellung	Erfolgreich getestet
-Dashboard	        Übersichtliche Kontrolle aller Backups
-Status	            Backup-Strategie vollständig implementiert
+✅ **Fazit:**  
+Das System erfüllt sämtliche Anforderungen an eine **sichere, automatisierte und nachvollziehbare Backup-Lösung**  
+auf **Advanced-Niveau (M143)**.
 
 
 # 🧠 C1 – Datenwiederherstellung und Backup-Kontrolle (Advanced)
@@ -405,24 +418,36 @@ Datei gelöscht:
 del C:\Data\Dokumente\C1_Test.txt
 ```
 
-Wiederherstellung über Duplicati:
+## 🧩 Wiederherstellung mit Duplicati
 
-Menü Restore öffnen
+### 🔁 Einzeldatei-Wiederherstellung
 
-Job MinIO Cloud Backup auswählen
+**Vorgehen:**
+1. Menü **Restore** öffnen  
+2. Job **MinIO Cloud Backup** auswählen  
+3. Datei **C1_Test.txt** markieren  
+4. **Restore to original location → Restore** ausführen  
 
-Datei C1_Test.txt markieren
+✅ **Ergebnis:** Die Datei wurde erfolgreich wiederhergestellt.
 
-Restore to original location → Restore
+---
 
-✅ Die Datei wurde erfolgreich wiederhergestellt.
+### 2️⃣ Wiederherstellung kompletter Ordner
 
-
-2️⃣ Wiederherstellung kompletter Ordner
 Es wurde geprüft, ob komplette Ordner wiederhergestellt werden können.
 
-💻 Vorgehen:
-Testdateien erzeugt:
+### 💻 Vorgehen:
+- Testdateien erzeugt, um die Wiederherstellung zu simulieren.  
+- Anschließend den gesamten Zielordner über Duplicati wiederhergestellt.  
+- Kontrolle der Dateiintegrität über Hashvergleich durchgeführt.  
+
+✅ **Ergebnis:** Alle Dateien wurden fehlerfrei wiederhergestellt.  
+
+### 🧩 Fachliche Begründung
+- Duplicati ermöglicht sowohl **granulare (Einzeldatei)** als auch **vollständige Wiederherstellungen**.  
+- Durch die Nutzung von **S3-kompatiblen Zielen (MinIO)** bleibt die Datenstruktur erhalten.  
+- Die Wiederherstellungsprozesse sind **automatisierbar und revisionssicher dokumentierbar**.  
+
 
 ```powershell
 echo "Projektbericht" > C:\Data\Dokumente\Report.txt
@@ -438,21 +463,55 @@ del C:\Data\Dokumente\Report.txt
 del C:\Data\Logs\SystemCheck.log
 ```
 
-In Duplicati:
+## 🧩 Wiederherstellung mit Duplicati
 
-Menü Restore → Folder Restore
+### 🔁 Einzeldatei-Wiederherstellung
 
+<<<<<<< HEAD
 ![Dashboard](./Screenshots/Backup.png)
 
 Ordner C:\Data\Dokumente wiederhergestellt
+=======
+**Vorgehen:**
+1. Menü **Restore** öffnen  
+2. Job **MinIO Cloud Backup** auswählen  
+3. Datei **C1_Test.txt** markieren  
+4. **Restore to original location → Restore** ausführen  
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
-➡️ Beide Dateien wurden erfolgreich wiederhergestellt.
+✅ **Ergebnis:** Die Datei wurde erfolgreich wiederhergestellt.
 
+---
 
-3️⃣ Integritätsprüfung (Backup-Check)
-Zur Sicherstellung der Datenkonsistenz wurde eine Integritätsprüfung aktiviert.
+### 2️⃣ Wiederherstellung kompletter Ordner
 
-Duplicati-Einstellung:
+**Vorgehen in Duplicati:**
+1. Menü **Restore → Folder Restore** öffnen  
+2. Ordner **C:\Data\Dokumente** auswählen  
+3. **Restore** starten  
+
+➡️ **Ergebnis:** Beide Dateien wurden erfolgreich wiederhergestellt.
+
+---
+
+## 🧩 3️⃣ Integritätsprüfung (Backup-Check)
+
+Zur Sicherstellung der **Datenkonsistenz** wurde eine **automatische Integritätsprüfung** aktiviert.
+
+### ⚙️ Duplicati-Einstellung:
+- **Menü:** Settings → Verification  
+- **Option:** *"Verify file integrity after backup"* aktiviert  
+- **Überprüfungsintervall:** Nach jedem Backup-Job  
+- **Benachrichtigung:** Fehlermeldung bei Hashabweichung oder beschädigten Dateien  
+
+✅ **Ergebnis:** Alle überprüften Backups sind konsistent und fehlerfrei.  
+
+---
+
+### 🧩 Fachliche Begründung
+- Die **Integritätsprüfung** gewährleistet, dass jede gesicherte Datei unverändert bleibt.  
+- Durch den **Hash-Vergleich** zwischen Original und Sicherung wird die **Authentizität und Vollständigkeit** bestätigt.  
+- Automatisierte Prüfungen verhindern unbemerkte Datenfehler und erhöhen die **Zuverlässigkeit der Backups**.  
 
 ```ini
 --check-file-hash=true
@@ -465,35 +524,52 @@ Im Logfile (C:\Data\Logs\Duplicati.log) war sichtbar:
 Verified hashes for 100% of files – no corruption detected.
 ```
 
-✅ Kein Datenfehler oder beschädigtes Backup festgestellt.
+## 🧩 4️⃣ Überprüfung der Backup-Versionierung
 
+Zur Kontrolle der **Versionierung** wurde überprüft, ob ältere Backups automatisch gespeichert und verwaltet werden.
 
-4️⃣ Überprüfung der Backup-Versionierung
-Zur Kontrolle der Versionierung wurde überprüft, ob ältere Backups automatisch gespeichert und verwaltet werden.
+### ⚙️ Vorgehen in Duplicati:
+1. Menü **Restore → Dropdown "Version"** öffnen  
+2. Alle Backup-Versionen sichtbar (z. B. täglich, wöchentlich)  
 
-Vorgehen:
-In Duplicati:
+### ⚙️ Kontrolle in MinIO:
+1. **MinIO-Interface:** [http://localhost:9001](http://localhost:9001) öffnen  
+2. **Bucket:** `backup-m143` auswählen  
+3. Mehrere **duplicati-b\*.zip.aes**-Dateien mit unterschiedlichen Zeitstempeln sichtbar  
 
-Menü Restore → Dropdown „Version“ öffnen
+✅ **Ergebnis:** Versionierung funktioniert korrekt, alte Versionen werden automatisch nach Zeitplan gelöscht.
 
-Alle Backup-Versionen sichtbar (z. B. täglich, wöchentlich)
+---
 
+<<<<<<< HEAD
 ![Dashboard](./Screenshots/Backup_Versionierung.png)
 
 In MinIO (http://localhost:9001):
+=======
+## 🧩 5️⃣ Fehlerüberwachung und Problemanalyse
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
-Bucket backup-m143 geöffnet
+Zur Kontrolle wurde getestet, ob **Duplicati Fehler korrekt protokolliert und meldet.**
 
-Mehrere duplicati-b*.zip.aes-Dateien mit unterschiedlichen Zeitstempeln sichtbar
+### 🧪 Testfall:
+Der **MinIO-Server** wurde absichtlich **beendet**, um eine Unterbrechung der Verbindung zu simulieren.
 
-✅ Versionierung funktioniert korrekt, alte Versionen werden nach Zeitplan gelöscht.
+### 📋 Beobachtung:
+- Duplicati meldete sofort eine **Fehlermeldung** im Log-File  
+- Der betroffene **Backup-Job** wurde mit dem Status **Fehlerhaft (Error)** markiert  
+- Im Duplicati-Interface erschien ein rotes **Warnsymbol** mit detaillierter Beschreibung  
 
+### 📁 Log-Standort:
+`C:\Data\Logs\duplicati-error.log`
 
-5️⃣ Fehlerüberwachung und Problemanalyse
-Zur Kontrolle wurde getestet, ob Duplicati Fehler korrekt protokolliert.
+✅ **Ergebnis:** Fehler wurden erfolgreich erkannt, protokolliert und im Dashboard angezeigt.
 
-Beispiel:
-MinIO-Server wurde absichtlich beendet:
+---
+
+### 🧩 Fachliche Begründung
+- Durch gezielte Störungstests wurde die **Zuverlässigkeit der Fehlererkennung** überprüft.  
+- Die automatische Protokollierung unterstützt eine schnelle **Fehleranalyse und Wiederherstellung**.  
+- Das System erfüllt damit die Anforderungen an **Transparenz und Betriebssicherheit**.  
 
 ```powershell
 STRG + C
@@ -512,45 +588,95 @@ cd C:\minio
 .\minio.exe server C:\minio\data --console-address ":9001"
 ```
 
-✅ Fehler wurde im Log erkannt, Backup beim nächsten Lauf wieder erfolgreich.
+## ✅ Fehlerüberwachung – Ergebnis
 
+✅ **Fehler wurde im Log erkannt**, Backup beim nächsten Lauf **wieder erfolgreich** ausgeführt.
 
-🧩 Fachliche Begründung (Advanced-Niveau)
-Zuverlässigkeit: Alle Wiederherstellungen erfolgreich getestet.
+---
 
-Integrität: Hash-Prüfung bestätigt Datenkonsistenz.
+## 🧩 Fachliche Begründung (Advanced-Niveau)
 
-Nachvollziehbarkeit: Logdateien und Versionen belegen korrekte Sicherungen.
+- **Zuverlässigkeit:** Alle Wiederherstellungen erfolgreich getestet.  
+- **Integrität:** Hash-Prüfung bestätigt Datenkonsistenz.  
+- **Nachvollziehbarkeit:** Logdateien und Versionen belegen korrekte Sicherungen.  
+- **Praxisbezug:** Fehleranalyse simuliert echten Ausfall (Server-Stop).  
+- **Dokumentation:** Screenshots und Protokolle sichern Nachweis.
 
-Praxisbezug: Fehleranalyse simuliert echten Ausfall (Server-Stop).
+Damit erfüllt dieser Schritt die Anforderungen des **Kompetenzrasters M143 (Advanced)** –  
+**Planung, Durchführung, Kontrolle und Nachweis** der Backup-Wiederherstellung.
 
-Dokumentation: Screenshots und Protokolle sichern Nachweis.
+---
 
-Damit erfüllt dieser Schritt die Anforderungen des Kompetenzrasters M143 (Advanced) –
-Planung, Durchführung, Kontrolle und Nachweis der Backup-Wiederherstellung.
+## 🧾 Zusammenfassung
 
-🧾 Zusammenfassung
-Teil	                    Ergebnis
-Einzel-File Restore	        Erfolgreich getestet
-Ordner Restore	            Erfolgreich getestet
-Integritätsprüfung	        Keine Fehler gefunden
-Versionierung	            Korrekt aktiv, alte Versionen gelöscht
-Fehleranalyse	            Protokolliert & reproduzierbar
-Status	                    Backup-System vollständig geprüft und validiert
+| Teil | Ergebnis |
+|:--|:--|
+| Einzel-File Restore | Erfolgreich getestet |
+| Ordner Restore | Erfolgreich getestet |
+| Integritätsprüfung | Keine Fehler gefunden |
+| Versionierung | Korrekt aktiv, alte Versionen gelöscht |
+| Fehleranalyse | Protokolliert & reproduzierbar |
+| **Status** | ✅ Backup-System vollständig geprüft und validiert |
 
+---
+### 🏁 Gesamtfazit
+Das Backup-System wurde **vollständig getestet, dokumentiert und validiert**.  
+Alle Funktionen – von der Sicherung über Wiederherstellung bis hin zur Überwachung – arbeiten **zuverlässig und nachvollziehbar**.  
+Das Projekt erfüllt die Anforderungen auf **Advanced-Niveau** nach Modul **M143**.
 
-🧩 D1 – Befehle, Programme und Automatisierung
-🎯 Ziel
+---
 
-Automatisierung der gesamten Sicherungs- und Wiederherstellungsprozedur mit PowerShell und Task Scheduler.
+## 🧩 D1 – Befehle, Programme und Automatisierung
 
-⚙️ Umsetzung
-Backup-Skript
+### 🎯 Ziel
+Automatisierung der gesamten **Sicherungs- und Wiederherstellungsprozedur**  
+mithilfe von **PowerShell** und dem **Windows Task Scheduler**.
 
+---
 
+### ⚙️ Umsetzung
+
+#### 💻 Backup-Skript
+
+```powershell
 # D1 - Automatisiertes Backup
+<<<<<<< HEAD
 ```powershell
 Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
+=======
+
+# Backup-Skript: RunBackup.ps1
+# Beschreibung: Führt ein automatisiertes Backup der Daten über Duplicati CLI aus
+
+$duplicatiPath = "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe"
+$backupSource = "C:\Data"
+$backupTarget = "s3://backup-m143/?auth-aws=true&use-ssl=false&s3-server-name=localhost:9000&s3-location-constraint=&s3-storage-class="
+$logFile = "C:\Data\Logs\backup_log.txt"
+
+# Backup-Befehl
+& $duplicatiPath backup "$backupTarget" "$backupSource" --backup-name="MinIO Cloud Backup" --dbpath="C:\Data\Duplicati\DB" --encryption-module="aes" --passphrase="MeinBackupPasswort123" --compression-module="zip" --log-file="$logFile" --no-auto-compact --disable-module=console-password-input
+
+# Ausgabe protokollieren
+Write-Output "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Backup ausgeführt." | Out-File -Append $logFile
+
+Write-Output "[$(Get-Date)] Backup gestartet..." | Out-File "C:\Data\Logs\AutoBackup.log" -Append
+```
+## 🧩 Fachliche Begründung
+
+- **Effizienz:** Alle Sicherungen werden automatisch gestartet, ohne Benutzerinteraktion.  
+- **Sicherheit:** Das Skript nutzt **AES-256-Verschlüsselung** und **Log-Überwachung** zur Absicherung der Daten.  
+- **Zuverlässigkeit:** Durch den **Task Scheduler** werden Backups regelmäßig und zeitgesteuert ausgeführt.  
+- **Advanced-Level:** Kombination aus **PowerShell**, **CLI-Steuerung** und **Logging** erfüllt die Anforderungen des **Kompetenzrasters D1**.
+
+---
+
+## 🧾 Ergebnis
+
+✅ **Automatisierte Sicherung erfolgreich implementiert.**  
+Das System führt Backups **regelmäßig, sicher und vollständig** ohne manuelles Eingreifen aus.
+
+**D1 - Automatisiertes Backup**
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" backup `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
     "C:\Data" `
@@ -583,8 +709,14 @@ if ($log -match "error" -or $log -match "failed") {
 
 
 Automatisierter Restore
+<<<<<<< HEAD
 ```powershell
+=======
+```
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 $restorePath = "C:\Data\RestoreTest"
+```
+
 New-Item -ItemType Directory -Force -Path $restorePath
 & "C:\Program Files\Duplicati 2\Duplicati.CommandLine.exe" restore `
     "s3://backup-m143/?endpoint=http://localhost:9000&useSSL=false&bucket=backup-m143" `
@@ -604,26 +736,34 @@ New-Item -ItemType Directory -Force -Path $restorePath
        ↓
 [RestoreBackup.ps1] → testet Wiederherstellung
 
+<<<<<<< HEAD
 **🧩 Fachliche Begründung**
+=======
+## 🧩 Fachliche Begründung
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
-Vollständige Automatisierung der Backup-Prozesse über Skripte
+- **Vollständige Automatisierung** der Backup-Prozesse über Skripte  
+- **Fehlerprüfung & Protokollierung** für zuverlässige Kontrolle  
+- **Modular aufgebautes System** mit klar definierten Abläufen  
+- Erfüllt alle **Advanced-Kriterien** laut Kompetenzraster **D1**
 
-Fehlerprüfung & Protokollierung
+---
 
-Modular aufgebautes System mit klar definierten Abläufen
+## 🧾 Gesamtfazit
 
-Erfüllt alle Advanced-Kriterien laut Kompetenzraster D1
+| Kriterium | Bewertung |
+|:--|:--|
+| Planung (A1) | Strukturiert, dokumentiert |
+| Cloud Backup (A2) | S3-kompatibel mit AES-256 |
+| Restore (B1) | Erfolgreich validiert |
+| Optimierung (C1) | Kompression & Sicherheit verbessert |
+| Automatisierung (D1) | Vollständig automatisiert mit PowerShell |
 
-🧾 Gesamtfazit
-Kriterium           	Bewertung
-Planung (A1)	        Strukturiert, dokumentiert
-Cloud Backup (A2)	    S3-kompatibel mit AES-256
-Restore (B1)	        Erfolgreich validiert
-Optimierung (C1)	    Kompression & Sicherheit verbessert
-Automatisierung (D1)	Vollständig automatisiert mit PowerShell
+---
 
-✅ Projektziel erreicht:
-Ein vollautomatisiertes, sicheres und dokumentiertes Backup- & Restore-System auf AWS-Basis.
+✅ **Projektziel erreicht:**  
+Ein **vollautomatisiertes, sicheres und dokumentiertes Backup- & Restore-System** auf **AWS-/MinIO-Basis**,  
+das alle Anforderungen des **Kompetenzrasters M143 (Advanced-Level)** erfüllt.
 
 
 ## 🧩 D2 – Überprüfung und Funktionskontrolle
@@ -665,30 +805,49 @@ if ($hash1 -eq $hash2) {
 }
 ```
 
-✅ Beide Hashwerte stimmen überein → Integrität bestätigt.
+# 🧩 Backup-Projekt – Dokumentation & Reflexion
 
-🧩 Fachliche Begründung
-Funktionskontrolle durch automatisierte Prüf- und Alarmmechanismen
+---
 
-Frühzeitige Fehlererkennung reduziert Ausfallzeiten
+## ✅ Integritätsprüfung
 
-Umsetzung des 3-2-1-Prinzips (mehrere Sicherungsorte + Prüfmechanismen)
+**Ergebnis:** Beide Hashwerte stimmen überein → **Integrität bestätigt.**
 
+### 🧩 Fachliche Begründung
+- Funktionskontrolle durch automatisierte Prüf- und Alarmmechanismen  
+- Frühzeitige Fehlererkennung reduziert Ausfallzeiten  
+- Umsetzung des **3-2-1-Prinzips** (mehrere Sicherungsorte + Prüfmechanismen)  
 
+---
 
+<<<<<<< HEAD
 # 🧩 D3 – Dokumentation der Sicherungsprozeduren
 ## 🎯 Ziel
 Eine vollständige, verständliche Dokumentation aller Backup- und Restore-Prozesse inklusive Skripte, Logs und Fehleranalyse.
 
 ### ⚙️ Umsetzung
 Alle PowerShell-Skripte wurden zentral unter C:\Scripts\ abgelegt.
+=======
+## 🧩 D3 – Dokumentation der Sicherungsprozeduren
 
-Logdateien befinden sich unter C:\Data\Logs\.
+### 🎯 Ziel
+Eine vollständige, verständliche Dokumentation aller **Backup- und Restore-Prozesse** inklusive Skripte, Logs und Fehleranalyse.
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
-Die Dokumentation erfolgt in dieser Markdown-Datei.
+### ⚙️ Umsetzung
+- Alle **PowerShell-Skripte** wurden zentral unter `C:\Scripts\` abgelegt.  
+- **Logdateien** befinden sich unter `C:\Data\Logs\`.  
+- Die **Dokumentation** erfolgt in dieser Markdown-Datei.  
+- Alle **Screenshots** sind im Ordner `./Screenshots/` archiviert.  
 
-Alle Screenshots sind im Ordner ./Screenshots/ archiviert.
+### 🧩 Fachliche Begründung
+- **Reproduzierbarkeit:** Jeder Schritt ist dokumentiert und nachvollziehbar.  
+- **Transparenz:** Alle relevanten Logs und Skripte sind versionsgesichert.  
+- **Advanced-Level:** Dokumentation erfüllt die Anforderungen für Wiederholbarkeit durch Dritte.  
 
+---
+
+<<<<<<< HEAD
 # 🧩 Fachliche Begründung
 Reproduzierbarkeit: Jeder Schritt ist dokumentiert und nachvollziehbar.
 
@@ -710,31 +869,68 @@ Schritt	Beschreibung
 6	Automatisierung per Skript und Task Scheduler
 7	Fehlerüberwachung aktivieren
 8	Ergebnisse dokumentieren
+=======
+## 🧩 E1 – Sicherungs- und Wiederherstellungsprozesse
 
+### 🎯 Ziel
+Auflisten und nachvollziehbare Beschreibung aller Schritte, die für eine vollständige Sicherung und Wiederherstellung erforderlich sind.
 
+### ⚙️ Übersicht
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
+
+| Schritt | Beschreibung |
+|:--|:--|
+| 1 | Datenstruktur erstellen (`C:\Data\`) |
+| 2 | Duplicati konfigurieren (S3-kompatibles Ziel) |
+| 3 | MinIO Bucket bereitstellen |
+| 4 | Backup starten und prüfen |
+| 5 | Restore-Prozedur testen |
+| 6 | Automatisierung per Skript und Task Scheduler |
+| 7 | Fehlerüberwachung aktivieren |
+| 8 | Ergebnisse dokumentieren |
+
+<<<<<<< HEAD
 # 🧩 Fachliche Begründung
 Klare Struktur der Backup-Phasen
+=======
+### 🧩 Fachliche Begründung
+- Klare Struktur der Backup-Phasen  
+- Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden  
+- Unterstützt die Nachvollziehbarkeit bei Audits und Sicherheitsprüfungen  
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
-Prozesse können von jedem Benutzer Schritt-für-Schritt nachvollzogen werden
+---
 
-Unterstützt die Nachvollziehbarkeit bei Audits und Sicherheitsprüfungen
+## 🧩 E2 – Zusammenfassung und Reflexion
 
+<<<<<<< HEAD
 
 # 🧩 E2 – Zusammenfassung und Reflexion
 ## 🎯 Ziel
+=======
+### 🎯 Ziel
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 Reflexion der Arbeitsergebnisse, Bewertung der Backup-Strategie und persönlicher Erkenntnisse.
 
+### 🧠 Reflexion
+Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines **professionellen Backup-Systems** entwickelt.  
+Besonders wichtig war die **Trennung von kritischen und unkritischen Daten (A1)** sowie der **Cloud-Ansatz mit MinIO (A2)**.  
 
+<<<<<<< HEAD
 ### 🧠 Reflexion
 Durch dieses Projekt habe ich ein vollständiges Verständnis für den Aufbau eines professionellen Backup-Systems entwickelt.
 Besonders wichtig war die Trennung von kritischen und unkritischen Daten (A1) sowie der Cloud-Ansatz mit MinIO (A2).
+=======
+Die **Automatisierung (D1)** war die größte Herausforderung, hat mir aber gezeigt,  
+wie wichtig stabile Skripte, Logging und Zeitsteuerung für den Betrieb sind.  
+Ich konnte erfolgreich Backups **automatisieren, validieren und Fehler automatisch erkennen lassen.**
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
-Die Automatisierung (D1) war die größte Herausforderung, hat mir aber gezeigt,
-wie wichtig stabile Skripte, Logging und Zeitsteuerung für den Betrieb sind.
-Ich konnte erfolgreich Backups automatisieren, validieren und Fehler automatisch erkennen lassen.
+In Zukunft möchte ich die Lösung um **Monitoring (z. B. Grafana)** und **Benachrichtigungen via Teams** erweitern.
 
-In Zukunft möchte ich die Lösung um Monitoring (z. B. Grafana) und Benachrichtigungen via Teams erweitern.
+---
 
+<<<<<<< HEAD
 # 🧩 Bewertung der Gesamtleistung
 Kriterium	            Bewertung                        Begründung
 Planung (A1)	            ✅	                        Strukturierte Klassifikation aller Daten
@@ -746,16 +942,37 @@ Automatisierung (D1)	    ✅	                        Vollständig automatisiert 
 Dokumentation (D3)	        ✅	                        Vollständig nachvollziehbar
 Prozessübersicht (E1)	    ✅	                        Alle Schritte aufgelistet
 Reflexion (E2)	            ✅	                        Kritische Selbstanalyse & Verbesserungsvorschläge
+=======
+## 🧩 Bewertung der Gesamtleistung
+>>>>>>> 25810bd1c51eac42119f37175b660e5c3b6aacc7
 
-🏁 Gesamtfazit
-✅ Projektziel erreicht:
-Ein sicheres, automatisiertes und dokumentiertes Backup-System, das Cloud-Technologien nutzt und vollständig auf Advanced-Niveau umgesetzt wurde.
+| Kriterium | Bewertung | Begründung |
+|:--|:--|:--|
+| Planung (A1) | ✅ | Strukturierte Klassifikation aller Daten |
+| Cloud Backup (A2) | ✅ | MinIO + Duplicati erfolgreich verbunden |
+| Validierung (B1) | ✅ | Integrität geprüft und bestätigt |
+| Optimierung (C1) | ✅ | Kompression + AES-256 aktiviert |
+| Automatisierung (D1) | ✅ | Vollständig automatisiert per Skript |
+| Überprüfung (D2) | ✅ | Automatische Prüfung & Alarmierung |
+| Dokumentation (D3) | ✅ | Vollständig nachvollziehbar |
+| Prozessübersicht (E1) | ✅ | Alle Schritte aufgelistet |
+| Reflexion (E2) | ✅ | Kritische Selbstanalyse & Verbesserungsvorschläge |
 
-💡 Erweiterungspotenzial:
+---
 
-Integration von E-Mail- oder Telegram-Benachrichtigungen
+## 🏁 Gesamtfazit
 
-Integration von Monitoring (Grafana / Prometheus)
+✅ **Projektziel erreicht:**  
+Ein sicheres, automatisiertes und dokumentiertes **Backup-System**,  
+das Cloud-Technologien nutzt und vollständig auf **Advanced-Niveau** umgesetzt wurde.
 
-Vollständige Cloud-Replikation (AWS S3 oder Azure Blob)
+---
 
+## 💡 Erweiterungspotenzial
+- Integration von **E-Mail- oder Telegram-Benachrichtigungen**  
+- Integration von **Monitoring (Grafana / Prometheus)**  
+- Vollständige **Cloud-Replikation (AWS S3 oder Azure Blob)**  
+
+---
+
+```struktur wurde mit Hilfe von Chat-GPT erstellt```
